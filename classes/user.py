@@ -3,25 +3,37 @@ from account import Account
 
 class User:
     def __init__(self, name):
-        self.accounts = {'cash': set(), 'virtual': set()}
+        self.name = name
+        self.accounts = set()
+        self.categories = {'food': 0,
+                           'housing': 0,
+                           'health': 0,
+                           'car': 0,
+                           'clothes': 0,
+                           'pets': 0,
+                           'gifts': 0,
+                           'connection': 0}
 
-    def add_account(self, acc_type, amount = 0):
-        self.accounts[acc_type].add(Account(amount))
+    def add_account(self, name, balance=0):
+        self.accounts.add(Account(balance, name))
 
-    def get_sum_of_income(self) -> float:
-        pass
+    def get_total_income(self) -> float:
+        total_income = 0
+        for account in self.accounts:
+            total_income += account.income
+        return total_income
 
     def get_sum_of_spent(self) -> float:
-        pass
+        total_spent = 0
+        for account in self.accounts:
+            total_spent += account.spent
+        return total_spent
 
-    def get_accounts(self) -> tuple:
-        """
-        returns states of all the accounts
-        """
-        pass
-
-    def total_balance(self) -> float:
-        pass
+    def get_total_balance(self) -> float:
+        total_balance = 0
+        for account in self.accounts:
+            total_balance += account.balance
+        return total_balance
 
     def reset(self) -> None:
         """
