@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Домашняя страница{% endblock %}
+{% block content %}
+<form>
+    <input type="button" value='Сменить пароль' onClick="window.location.href = ' {% url 'password_change'%} '">
+</form>
+<form>
+    <input type="button" value='Выйти в окно' onClick="window.location.href = ' {% url 'logout'%} '">
+</form>
+{% endblock %}
