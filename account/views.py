@@ -1,8 +1,18 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from .forms import LoginForm
+from .forms import RegisterForm
 
 
 def profile(request):
-    return HttpResponseRedirect('/finance/profile')
+    return HttpResponseRedirect('/finance')
+
+
+def register(response):
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect('/finance')
+    else:
+        form = RegisterForm()
+    return render(response, "registration/register.html", {"form": form})

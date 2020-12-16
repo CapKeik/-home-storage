@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} {{user.username}} {% endblock %}
+
+{%block content %}
+<form action="{% url 'finance:add_category' user.id %}"  method = 'POST'>
+
+    {% csrf_token %}
+
+    <input type="text" required placeholder="Название категории", name="name"><br>
+    <button type="submit">Добавить</button>
+
+</form>
+{% endblock %}
