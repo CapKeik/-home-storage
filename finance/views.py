@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Category, Label, User
+from .models import Category, User
 
 
 def home(request):
@@ -14,7 +14,6 @@ def profile(response, user_id):
         user = User.objects.get(id=user_id)
     except:
         raise Http404("Пользователь не найден")
-
     if response.user == user:
         cat_lst = Category.objects.filter(user=response.user)
         return render(response, 'finance/profile.html', {'cat_lst': cat_lst})
@@ -27,4 +26,5 @@ def add_category(request, user_id):
     except:
         raise Http404("Пользователь не найден")
     cat = Category(user=user, name=request.POST['name'])
+    cat.save()
     return HttpResponseRedirect(reverse('finance:profile', args=(user.id,)))

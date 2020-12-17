@@ -3,6 +3,9 @@
 {% block title %} {{user.username}} {% endblock %}
 
 {%block content %}
+{% for cat in cat_lst %}
+<p>{{cat.name}} : {{cat.count_amounts}}</p>
+{% endfor %}
 <form action="{% url 'finance:add_category' user.id %}"  method = 'POST'>
 
     {% csrf_token %}
@@ -10,5 +13,9 @@
     <input type="text" required placeholder="Название категории", name="name"><br>
     <button type="submit">Добавить</button>
 
+</form>
+
+<form>
+    <input type="button" value='Назад' onClick="window.location.href = ' {% url 'profile'%} '">
 </form>
 {% endblock %}
