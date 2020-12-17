@@ -9,8 +9,17 @@
 <form action="{% url 'finance:add_category' user.id %}"  method = 'POST'>
 
     {% csrf_token %}
-
+    <h3>Создать категорию</h3>
     <input type="text" required placeholder="Название категории", name="name"><br>
+    <button type="submit">Добавить</button>
+
+</form>
+<form action="{% url 'finance:add_amount' user.id %}"  method = 'POST'>
+
+    {% csrf_token %}
+    <h3>Добавить трату</h3>
+    <input type="text" required placeholder="Название категории", name="name"><br>
+    <input type="number" required placeholder="Сумма", name="'count">
     <button type="submit">Добавить</button>
 
 </form>

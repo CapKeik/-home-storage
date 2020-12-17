@@ -28,3 +28,13 @@ def add_category(request, user_id):
     cat = Category(user=user, name=request.POST['name'])
     cat.save()
     return HttpResponseRedirect(reverse('finance:profile', args=(user.id,)))
+
+
+def add_amount(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+    except:
+        raise Http404("Пользователь не найден")
+    cat = Category.objects.get(name=request.POST['name'])
+    cat.amount += request.POST['count']
+    return HttpResponseRedirect(reverse('finance:profile', args=(user.id,)))
