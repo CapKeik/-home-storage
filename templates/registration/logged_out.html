@@ -1,6 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Logged out{% endblock %}
+{% block title %}Выход{% endblock %}
 {% block content %}
-    <h1>Logged out</h1>
-    <p>You have been successfully logged out. You can <a href="{% url "login" %}">log-in again</a>.</p>
+    <h1>Вы успешно вышли.</h1>
+<form>
+    <input type="button" value='Войти' onClick="window.location.href = ' {% url 'login'%} '">
+</form>
+<form>
+    <input type="button" value='Домой' onClick="window.location.href = ' {% url 'finance:home'%} '">
+</form>
 {% endblock %}
