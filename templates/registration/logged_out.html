@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Выход{% endblock %}
+{% block content %}
+    <h1>Вы успешно вышли.</h1>
+<form>
+    <input type="button" value='Войти' onClick="window.location.href = ' {% url 'login'%} '">
+</form>
+<form>
+    <input type="button" value='Домой' onClick="window.location.href = ' {% url 'finance:home'%} '">
+</form>
+{% endblock %}

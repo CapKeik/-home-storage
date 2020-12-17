@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Домашняя страница{% endblock %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<form>
+    <input type="button" value='Сменить пароль' onClick="window.location.href = ' {% url 'password_change'%} '">
+</form>
+<form>
+    <input type="button" value='Выйти' onClick="window.location.href = ' {% url 'logout'%} '">
+</form>
+<form>
+    <input type="button" value='Профиль' onClick="window.location.href = ' {% url 'finance:profile' user.id%} '">
+</form>
+{% else%}
+<form>
+    <input type="button" value='войти' onClick="window.location.href = ' {% url 'login'%} '">
+</form>
+{% endif %}
+{% endblock %}
